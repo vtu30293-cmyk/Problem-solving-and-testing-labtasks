@@ -1,0 +1,64 @@
+Naive algorithm for Pattern Searching
+Last Updated :
+31 Mar, 2026
+Given a text string of length n and a pattern of length m, find all starting indices where the pattern occurs in the text.
+Note: You may assume that n>m.
+
+Examples: 
+
+Input: text = "geeksforgeeks", pattern = "geeks"
+Output:  [0, 8]
+Explanation: The string "geeks" occurs at index 0 and 8 in text.
+
+Input:  text =  "aabaacaadaabaaba", pattern = "aaba"
+Output: [0, 9,  12]
+
+
+import java.util.ArrayList;
+
+public class GFG {
+
+    // Function to search for all occurrences of 'pat' in 'txt' using Naive Approach
+    static ArrayList<Integer> search(String pat, String txt)
+    {
+        // Length of the pattern
+        int m = pat.length();
+
+        // Length of the text
+        int n = txt.length();
+
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        // Slide the pattern over text one by one
+        for (int i = 0; i <= n - m; i++)
+        {
+            int j;
+
+            // Check for pattern match at index i
+            for (j = 0; j < m; j++)
+            {
+                if (txt.charAt(i + j) != pat.charAt(j))
+                    break;
+            }
+
+            // If pattern matches, store index
+            if (j == m)
+                ans.add(i);
+        }
+
+        return ans;
+    }
+
+    public static void main(String[] args)
+    {
+        String txt = "aabaacaadaabaaba";
+        String pat = "aaba";
+
+        ArrayList<Integer> res = search(pat, txt);
+
+        for (int it : res)
+        {
+            System.out.print(it + " ");
+        }
+    }
+}
