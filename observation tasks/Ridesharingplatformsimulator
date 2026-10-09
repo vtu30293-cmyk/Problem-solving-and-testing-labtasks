@@ -1,0 +1,38 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+import java.util.Scanner;
+
+public class RideSharingPlatformSimulator {
+   public RideSharingPlatformSimulator() {
+   }
+
+   public static void main(String[] var0) {
+      Scanner var1 = new Scanner(System.in);
+      int var2 = var1.nextInt();
+
+      for(int var3 = 0; var3 < var2; ++var3) {
+         String var4 = var1.next();
+         double var5 = var1.nextDouble();
+
+         try {
+            Object var7;
+            if (var4.equalsIgnoreCase("Bike")) {
+               var7 = new Bike(var5);
+            } else if (var4.equalsIgnoreCase("Auto")) {
+               var7 = new Auto(var5);
+            } else {
+               if (!var4.equalsIgnoreCase("Cab")) {
+                  throw new IllegalArgumentException();
+               }
+
+               var7 = new Cab(var5);
+            }
+
+            System.out.println((int)((Trip)var7).fare());
+         } catch (Exception var8) {
+            System.out.println("Invalid Booking");
+         }
+      }
+
+      var1.close();
+   }
+}
