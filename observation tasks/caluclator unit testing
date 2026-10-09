@@ -1,0 +1,44 @@
+class Main {
+
+    // Calculator methods
+    static int add(int a, int b) {
+        return a + b;
+    }
+
+    static int subtract(int a, int b) {
+        return a - b;
+    }
+
+    static int multiply(int a, int b) {
+        return a * b;
+    }
+
+    static int divide(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Cannot divide by zero");
+        }
+        return a / b;
+    }
+
+    public static void main(String[] args) {
+
+        // Unit tests
+        assert add(5, 5) == 10 : "Addition failed";
+        assert subtract(10, 5) == 5 : "Subtraction failed";
+        assert multiply(4, 5) == 20 : "Multiplication failed";
+        assert divide(10, 2) == 5 : "Division failed";
+
+        try {
+            divide(10, 0);
+            assert false : "Division by zero test failed";
+        } catch (ArithmeticException e) {
+            System.out.println("Division by zero test passed");
+        }
+
+        System.out.println("Addition test passed");
+        System.out.println("Subtraction test passed");
+        System.out.println("Multiplication test passed");
+        System.out.println("Division test passed");
+        System.out.println("All tests completed!");
+    }
+}
