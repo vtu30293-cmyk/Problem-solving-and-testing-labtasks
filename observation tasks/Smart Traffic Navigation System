@@ -1,0 +1,42 @@
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("SMART TRAFFIC NAVIGATION SYSTEM");
+
+        System.out.print("Enter source: ");
+        String source = sc.nextLine();
+
+        System.out.print("Enter destination: ");
+        String destination = sc.nextLine();
+
+        String[] routes = {"Route A", "Route B", "Route C"};
+        int[] distance = {8, 10, 7};
+        int[] time = {35, 20, 40};
+
+        int min = 0;
+
+        System.out.println("\nAvailable Routes:");
+
+        for (int i = 0; i < routes.length; i++) {
+            System.out.println(routes[i] + " - "
+                    + distance[i] + " km, "
+                    + time[i] + " minutes");
+            
+            if (time[i] < time[min]) {
+                min = i;
+            }
+        }
+
+        System.out.println("\nBest Route: " + routes[min]);
+        System.out.println("From: " + source);
+        System.out.println("To: " + destination);
+        System.out.println("Distance: " + distance[min] + " km");
+        System.out.println("Estimated Time: " + time[min] + " minutes");
+
+        sc.close();
+    }
+}
